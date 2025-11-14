@@ -53,7 +53,7 @@ export const COMPANY_INFO = {
   name: 'Riser Tech',
   tagline: 'Fire & Safety Solutions',
   phone: '9787666104',
-  email: 'risertecno@gmail.com',
+  email: 'risertechno@gmail.com',
   address: 'Periyar Salai, Krishna Nagar, Chennai, Tamil Nadu, India',
   hours: 'Mon - Fri: 8:00 AM - 6:00 PM',
 };
