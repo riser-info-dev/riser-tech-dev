@@ -50,11 +50,11 @@ export const SERVICES: Array<{
 ];
 
 export const COMPANY_INFO = {
-  name: 'RiserTech',
+  name: 'Riser Technologies',
   tagline: 'Fire & Safety Solutions',
-  phone: '+1 234 468 85',
-  email: 'info@risertech.com',
-  address: '3891 Ranchview Dr. Richardson, California 62639',
+  phone: '9787666104',
+  email: 'risertecno@gmail.com',
+  address: 'Periyar Salai, Krishna Nagar, Chennai, Tamil Nadu, India',
   hours: 'Mon - Fri: 8:00 AM - 6:00 PM',
 };
 
