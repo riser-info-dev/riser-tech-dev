@@ -35,16 +35,16 @@ const features = [
 
 export function WhyChooseUs() {
   return (
-    <section className="py-20 bg-white dark:bg-gray-800 relative overflow-hidden">
+    <section className="py-12 sm:py-16 md:py-20 bg-white dark:bg-gray-800 relative overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute top-0 left-0 w-96 h-96 bg-amber-100 dark:bg-amber-900 opacity-20 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-yellow-100 dark:bg-yellow-900 opacity-20 rounded-full blur-3xl"></div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+      <div className="max-w-[90%] sm:max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-center mb-10 sm:mb-12 md:mb-16">
           {/* Image Section - Left Side */}
           <Scroll3D className="relative">
-            <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl">
+            <div className="relative h-[400px] sm:h-[450px] md:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
               {/* Main Image - Person with Fire Extinguisher */}
               <div className="absolute inset-0 bg-gradient-to-br from-gray-800 via-gray-700 to-gray-900">
                 {/* Placeholder for actual image - Replace with: /images/why-choose-us/fire-safety-expert.jpg */}
@@ -82,25 +82,25 @@ export function WhyChooseUs() {
 
           {/* Content Section - Right Side */}
           <div>
-            <div className="text-sm uppercase tracking-wider text-amber-600 mb-4 font-semibold flex items-center gap-2">
+            <div className="text-sm uppercase tracking-wider text-amber-600 mb-3 sm:mb-4 font-semibold flex items-center gap-2">
               <div className="w-2 h-2 bg-amber-600 rounded-full"></div>
               WHY CHOOSE US
             </div>
-            <LensHeading as="h2" className="text-4xl md:text-5xl font-bold mb-4" magnify={2.5}>
+            <LensHeading as="h2" className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4" magnify={2.5}>
               <span className="text-gray-900 dark:text-white">WE&apos;RE THE TRUSTED CHOICE FOR</span>
               <br />
               <span className="bg-gradient-to-r from-amber-600 via-yellow-600 to-amber-600 bg-clip-text text-transparent hover:from-yellow-600 hover:to-amber-600 transition-all duration-300 cursor-default inline-block">
                 FIRE SAFETY SOLUTIONS
               </span>
             </LensHeading>
-            <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
+            <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 mb-6 sm:mb-7 md:mb-8 leading-relaxed">
               When it comes to fire protection, choosing the right partner is critical. We are committed to delivering
               reliable, customized solutions that meet your specific needs.
             </p>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 md:gap-8">
           {features.map((feature, index) => (
                 <motion.div
                 key={index}

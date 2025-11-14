@@ -136,25 +136,63 @@ export function ProductMenu({ className }: ProductMenuProps) {
     <div 
       ref={menuRef}
       className={cn('relative', className)}
-      onMouseLeave={() => setIsOpen(false)}
+      onMouseLeave={() => {
+        // Only close on mouse leave for desktop
+        if (typeof window !== 'undefined' && window.innerWidth >= 768) {
+          setIsOpen(false);
+        }
+      }}
     >
       {/* Products Button - Click to go to products page, hover to show dropdown */}
       <div className="relative group">
-        <Link
-          href="/products"
+        <div
           className={cn(
-            'flex items-center gap-1 px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-300',
-            'group',
+            'flex items-center gap-1 px-3 sm:px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-300 cursor-pointer min-h-[44px]',
+            'group w-full md:w-auto',
             isOpen ? 'text-amber-600 dark:text-amber-400' : 'text-gray-700 dark:text-gray-300 hover:text-amber-600 dark:hover:text-amber-400'
           )}
-          onMouseEnter={() => setIsOpen(true)}
+          onMouseEnter={() => {
+            // On desktop, show on hover
+            if (typeof window !== 'undefined' && window.innerWidth >= 768) {
+              setIsOpen(true);
+            }
+          }}
+          onClick={(e) => {
+            // On mobile, toggle dropdown on click
+            if (typeof window !== 'undefined' && window.innerWidth < 768) {
+              e.preventDefault();
+              e.stopPropagation();
+              setIsOpen(!isOpen);
+            }
+          }}
         >
-          <span className="relative z-10">Products</span>
+          <Link
+            href="/products"
+            className="flex items-center gap-1 flex-1 md:flex-initial"
+            onClick={(e) => {
+              // On mobile, prevent navigation if we're toggling dropdown
+              if (typeof window !== 'undefined' && window.innerWidth < 768) {
+                e.preventDefault();
+                e.stopPropagation();
+                setIsOpen(!isOpen);
+              }
+            }}
+          >
+            <span className="relative z-10">Products</span>
+          </Link>
           <ChevronDown 
             className={cn(
-              'w-4 h-4 transition-transform duration-300',
+              'w-4 h-4 transition-transform duration-300 flex-shrink-0',
               isOpen ? 'rotate-180 text-amber-600' : 'group-hover:text-amber-600'
             )} 
+            onClick={(e) => {
+              // On mobile, toggle dropdown when clicking chevron
+              if (typeof window !== 'undefined' && window.innerWidth < 768) {
+                e.preventDefault();
+                e.stopPropagation();
+                setIsOpen(!isOpen);
+              }
+            }}
           />
           
           {/* Active Background */}
@@ -165,19 +203,19 @@ export function ProductMenu({ className }: ProductMenuProps) {
               transition={{ type: 'spring', stiffness: 380, damping: 30 }}
             />
           )}
-        </Link>
+        </div>
 
         {/* Dropdown Menu */}
         <AnimatePresence>
           {isOpen && (
             <>
-              {/* Backdrop */}
+              {/* Backdrop - Only show on desktop */}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.2 }}
-                className="fixed inset-0 bg-black/10 backdrop-blur-sm z-[45]"
+                className="hidden md:block fixed inset-0 bg-black/10 backdrop-blur-sm z-[45]"
                 style={{ top: '80px' }}
                 onClick={() => setIsOpen(false)}
               />
@@ -188,19 +226,33 @@ export function ProductMenu({ className }: ProductMenuProps) {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3, ease: 'easeOut' }}
-                className="absolute top-full left-0 mt-2 w-64 bg-white dark:bg-gray-900 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-800 z-[50] overflow-hidden"
-                onMouseEnter={() => setIsOpen(true)}
-                onMouseLeave={() => setIsOpen(false)}
+                className="absolute top-full left-0 mt-2 w-full md:w-64 max-w-[calc(100vw-1rem)] sm:max-w-[calc(100vw-2rem)] md:max-w-none bg-white dark:bg-gray-900 rounded-xl sm:rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-800 z-[60] md:z-[50]"
+                onMouseEnter={() => {
+                  // On desktop, keep open on hover
+                  if (typeof window !== 'undefined' && window.innerWidth >= 768) {
+                    setIsOpen(true);
+                  }
+                }}
+                onMouseLeave={() => {
+                  // On desktop, close on mouse leave
+                  if (typeof window !== 'undefined' && window.innerWidth >= 768) {
+                    setIsOpen(false);
+                  }
+                }}
+                onClick={(e) => {
+                  // Prevent closing when clicking inside the menu on mobile
+                  e.stopPropagation();
+                }}
               >
-                <div className="p-2">
+                <div className="p-1.5 sm:p-2 overflow-y-auto overflow-x-hidden overscroll-contain max-h-[calc(100vh-180px)] md:max-h-none" style={{ WebkitOverflowScrolling: 'touch' }}>
                   {/* All Products Link */}
                   <Link
                     href="/products"
                     onClick={() => setIsOpen(false)}
-                    className="flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 group text-gray-700 dark:text-gray-300 hover:bg-gradient-to-r hover:from-amber-50 hover:to-yellow-50 dark:hover:from-amber-900/20 dark:hover:to-yellow-900/20 hover:text-amber-600 dark:hover:text-amber-400 font-semibold border-b border-gray-200 dark:border-gray-700 mb-1"
+                    className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 md:py-2 rounded-md sm:rounded-lg transition-all duration-300 group text-gray-700 dark:text-gray-300 hover:bg-gradient-to-r hover:from-amber-50 hover:to-yellow-50 dark:hover:from-amber-900/20 dark:hover:to-yellow-900/20 hover:text-amber-600 dark:hover:text-amber-400 font-semibold border-b border-gray-200 dark:border-gray-700 mb-0.5 sm:mb-1 min-h-[32px] sm:min-h-[36px] md:min-h-[40px] text-xs sm:text-sm md:text-base"
                   >
-                    <Flame className="w-5 h-5 text-amber-600" />
-                    <span>All Products</span>
+                    <Flame className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 text-amber-600 flex-shrink-0" />
+                    <span className="truncate">All Products</span>
                   </Link>
                   
                   {/* Section Links */}
@@ -211,12 +263,12 @@ export function ProductMenu({ className }: ProductMenuProps) {
                         key={item.label}
                         href={item.href || '#'}
                         onClick={(e) => handleLinkClick(e, item.href || '')}
-                        className="flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 group text-gray-700 dark:text-gray-300 hover:bg-gradient-to-r hover:from-amber-50 hover:to-yellow-50 dark:hover:from-amber-900/20 dark:hover:to-yellow-900/20 hover:text-amber-600 dark:hover:text-amber-400"
+                        className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 md:py-2 rounded-md sm:rounded-lg transition-all duration-300 group text-gray-700 dark:text-gray-300 hover:bg-gradient-to-r hover:from-amber-50 hover:to-yellow-50 dark:hover:from-amber-900/20 dark:hover:to-yellow-900/20 hover:text-amber-600 dark:hover:text-amber-400 min-h-[32px] sm:min-h-[36px] md:min-h-[40px] text-xs sm:text-sm md:text-base"
                       >
                         {Icon && (
-                          <Icon className="w-5 h-5 text-gray-400 group-hover:text-amber-600 transition-colors duration-300" />
+                          <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 text-gray-400 group-hover:text-amber-600 transition-colors duration-300 flex-shrink-0" />
                         )}
-                        <span className="font-medium">{item.label}</span>
+                        <span className="font-medium truncate">{item.label}</span>
                       </Link>
                     );
                   })}

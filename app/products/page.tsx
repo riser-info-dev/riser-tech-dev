@@ -6,7 +6,6 @@ import { ProductSection } from '@/components/sections/ProductSection';
 import { ProductCard3D } from '@/components/sections/ProductCard3D';
 import { ProductSlide } from '@/components/sections/ProductSlide';
 import { ProductCardSlider } from '@/components/sections/ProductCardSlider';
-import { ConeSlideDesign } from '@/components/sections/ConeSlideDesign';
 
 // Product data
 const fireExtinguishers = [
@@ -240,14 +239,6 @@ const services = [
   },
 ];
 
-// Cone slide images for the full spectrum section
-const coneSlideImages = [
-  '/images/products/slides/ceasefire-slide-1.png',
-  '/images/products/slides/slide-2.jpg',
-  '/images/products/slides/slide-3.jpg',
-  '/images/products/slides/slide-4.jpg',
-  '/images/products/slides/slide-5.jpg',
-];
 
 export default function ProductsPage() {
   useEffect(() => {
@@ -275,7 +266,7 @@ export default function ProductsPage() {
       {/* Section 1: Our Full Spectrum Fire Solutions */}
       <section
         id="full-spectrum"
-        className="relative py-12 md:py-16 scroll-mt-20 overflow-hidden"
+        className="relative pt-24 pb-12 md:pt-28 md:pb-16 lg:pt-32 lg:pb-20 scroll-mt-20 overflow-hidden"
       >
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
@@ -291,22 +282,22 @@ export default function ProductsPage() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Content - Left side */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-center">
+          <div className="grid grid-cols-1 gap-6 lg:gap-8 items-center">
             {/* Content - Left side on desktop, top on mobile */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="space-y-4 md:space-y-5 text-base md:text-lg lg:text-xl text-white order-2 lg:order-1"
+              className="space-y-2 md:space-y-3 lg:space-y-4 text-sm md:text-base lg:text-lg text-white text-center"
             >
               <div>
-                <h3 className="text-2xl md:text-3xl font-bold mb-3 text-white">OUR VISION</h3>
-                <p className="text-xl md:text-2xl font-semibold mb-4 text-white">
+                <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-2 md:mb-3 lg:mb-4 text-white">OUR VISION</h1>
+                <p className="text-base md:text-lg lg:text-xl font-semibold mb-2 md:mb-3 lg:mb-4 text-white">
                   Your Safety, Our Commitment.
                 </p>
               </div>
-              <p className="text-white/90 leading-relaxed text-sm md:text-base">
+              <p className="text-white/90 leading-relaxed text-xs md:text-sm lg:text-base">
                 At RiserTech, we are driven by a singular purpose — to build a safer planet for everyone.
 In the battle against fire, there are no second chances. Every second counts, and every product we design is built with that responsibility in mind.
 
@@ -314,21 +305,6 @@ Through relentless innovation, advanced engineering, and uncompromising quality,
 Our commitment goes beyond technology — it's about protecting people, their communities, and their livelihoods.
 
 At RiserTech, safety isn't just our business — it's our promise to the world.</p>
-            </motion.div>
-
-            {/* Cone Slide Design - Right side on desktop, bottom on mobile */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="order-1 lg:order-2 flex justify-center lg:justify-end"
-            >
-              <ConeSlideDesign 
-                images={coneSlideImages} 
-                autoPlay={true}
-                autoPlayInterval={5000}
-              />
             </motion.div>
           </div>
         </div>

@@ -32,7 +32,7 @@ export function Footer() {
               <FireWaterLogo size={24} />
               {COMPANY_INFO.name}
             </h3>
-            <p className="text-sm mb-4 flex items-center gap-2 group">
+            <div className="text-sm mb-4 flex items-center gap-2 group">
               <div className="flex items-center">
                 <svg
                   className="text-amber-400"
@@ -77,8 +77,8 @@ export function Footer() {
               <span className="text-white font-medium">
                 {COMPANY_INFO.tagline}
               </span>
-            </p>
-            <p className="text-sm flex items-center gap-2 group">
+            </div>
+            <div className="text-sm flex items-center gap-2 group">
               <div className="flex items-center">
                 <svg
                   className="text-amber-400"
@@ -123,7 +123,7 @@ export function Footer() {
               <span className="text-white">
                 {COMPANY_INFO.hours}
               </span>
-            </p>
+            </div>
           </div>
 
           <div>

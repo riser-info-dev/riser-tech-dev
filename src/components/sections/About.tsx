@@ -16,16 +16,16 @@ export function About() {
   const [imageLoaded, setImageLoaded] = useState(false);
 
   return (
-    <section className="py-20 bg-gray-50 dark:bg-gray-900 relative overflow-hidden">
+    <section className="py-12 sm:py-16 md:py-20 bg-gray-50 dark:bg-gray-900 relative overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-amber-200 dark:bg-amber-900 opacity-10 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-yellow-200 dark:bg-yellow-900 opacity-10 rounded-full blur-3xl"></div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
+      <div className="max-w-[90%] sm:max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-center mb-12 sm:mb-16 md:mb-20">
           {/* Image Section - Left Side */}
           <Scroll3D className="relative group">
-            <div className="relative h-[500px] md:h-[600px] rounded-2xl overflow-hidden shadow-2xl">
+            <div className="relative h-[400px] sm:h-[450px] md:h-[500px] lg:h-[600px] rounded-2xl overflow-hidden shadow-2xl">
               {/* Background Image */}
               {!imageError ? (
                 <div className="absolute inset-0 w-full h-full">
@@ -84,22 +84,22 @@ export function About() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="text-sm uppercase tracking-wider text-amber-600 mb-4 font-semibold">ABOUT US</div>
-            <LensHeading as="h2" className="text-4xl md:text-5xl font-bold mb-6" magnify={2.5}>
+            <div className="text-sm uppercase tracking-wider text-amber-600 mb-3 sm:mb-4 font-semibold">ABOUT US</div>
+            <LensHeading as="h2" className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-5 md:mb-6" magnify={2.5}>
               <span className="text-gray-900 dark:text-white">DEDICATION TO DELIVERING BEST</span>
               <br />
               <span className="bg-gradient-to-r from-amber-600 to-yellow-600 bg-clip-text text-transparent hover:from-yellow-600 hover:to-amber-700 transition-all duration-300">
                 FIRE SAFETY SOLUTIONS
               </span>
             </LensHeading>
-            <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
+            <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 mb-6 sm:mb-7 md:mb-8 leading-relaxed">
               We are your trusted emergency fire ally, dedicated to protecting your home or business with reliable fire
               system installations. Our expert team is ready to provide top-tier fire safety solutions tailored to your
               needs.
             </p>
             
             {/* Feature Icons */}
-            <div className="grid grid-cols-2 gap-6 mb-8">
+            <div className="grid grid-cols-2 gap-4 sm:gap-5 md:gap-6 mb-6 sm:mb-7 md:mb-8">
               <div className="flex items-center gap-3 group">
                 <div className="w-12 h-12 rounded-full border-2 border-amber-600 flex items-center justify-center group-hover:bg-amber-600 transition-all">
                   <Zap className="w-6 h-6 text-amber-600 group-hover:text-white transition-colors" />
@@ -119,7 +119,7 @@ export function About() {
             </div>
             
             {/* Bullet Points */}
-            <div className="space-y-3 mb-8">
+            <div className="space-y-2 sm:space-y-2.5 md:space-y-3 mb-6 sm:mb-7 md:mb-8">
               {['We offer flexible hours to fit.', 'We offer flexible hours to fit.', 'We offer flexible hours to fit.'].map((item, index) => (
                 <div key={index} className="flex items-center gap-3">
                   <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
@@ -145,7 +145,7 @@ export function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6"
+          className="mt-10 sm:mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 md:gap-6"
         >
           {[
             { icon: Users, number: 100, start: 90, suffix: '+', label: 'Happy Clients', tooltip: 'Satisfied customers worldwide', isCounter: true },

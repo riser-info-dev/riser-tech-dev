@@ -104,7 +104,7 @@ function ProjectCard({
         className="group relative h-full bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-700/50 hover:border-amber-300/80 dark:hover:border-amber-600/60"
       >
         {/* Image Header */}
-        <div className="h-52 relative overflow-hidden bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900">
+        <div className="h-[104px] sm:h-[125px] md:h-52 relative overflow-hidden bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900">
           {!imageError ? (
             <>
               {/* Project Image with Next.js Image component */}
@@ -159,7 +159,7 @@ function ProjectCard({
                     </div>
                     
         {/* Content Section */}
-        <div className="p-6 bg-white dark:bg-gray-800 relative">
+        <div className="p-4 sm:p-5 md:p-6 bg-white dark:bg-gray-800 relative">
           {/* Title - refined hover effect */}
           <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-amber-600 dark:group-hover:text-amber-500 transition-colors duration-500 line-clamp-2">
                           {project.title}
@@ -206,18 +206,18 @@ function ProjectCard({
 
 export function Projects() {
   return (
-    <section className="py-20 bg-gray-50 dark:bg-gray-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <LensHeading as="h2" className="text-4xl font-bold mb-4" magnify={2.5}>
+    <section className="py-12 sm:py-16 md:py-20 bg-gray-50 dark:bg-gray-900">
+      <div className="max-w-[90%] sm:max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+        <div className="text-center mb-8 sm:mb-10 md:mb-12">
+          <LensHeading as="h2" className="text-3xl sm:text-4xl font-bold mb-3 sm:mb-4" magnify={2.5}>
             Our Projects
           </LensHeading>
-          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
             Explore our work - trusted fire safety solutions for various industries and property types.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
           {projects.map((project, index) => {
             const Icon = project.icon;
             return (

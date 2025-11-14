@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X } from 'lucide-react';
+import { AlignJustify, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { AnimatedLogo } from '@/components/ui/AnimatedLogo';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -166,14 +166,19 @@ export function Navigation() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            className="md:hidden p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors relative"
             aria-label="Toggle menu"
           >
             <motion.div
-              animate={{ rotate: isOpen ? 180 : 0 }}
+              animate={{ rotate: isOpen ? 90 : 0 }}
               transition={{ duration: 0.3 }}
+              className="relative"
             >
-              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <AlignJustify className="w-6 h-6" />
+              )}
             </motion.div>
           </button>
         </div>
@@ -187,9 +192,9 @@ export function Navigation() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden overflow-hidden bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl border-t border-gray-200 dark:border-gray-800"
+            className="md:hidden overflow-visible bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl border-t border-gray-200 dark:border-gray-800"
           >
-            <div className="px-4 py-4 space-y-2">
+            <div className="px-3 sm:px-4 py-3 sm:py-4 space-y-1.5 sm:space-y-2">
               {/* Home Link */}
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
@@ -200,7 +205,7 @@ export function Navigation() {
                   href="/"
                   onClick={() => setIsOpen(false)}
                   className={cn(
-                    'block px-4 py-3 rounded-xl text-base font-semibold transition-all duration-300',
+                    'block px-3 sm:px-4 py-3 rounded-xl text-sm sm:text-base font-semibold transition-all duration-300 min-h-[44px] flex items-center',
                     'relative',
                     pathname === '/'
                       ? 'text-blue-600 dark:text-blue-400 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20'
@@ -223,7 +228,7 @@ export function Navigation() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.1 }}
               >
-                <div className="mb-2">
+                <div className="mb-1 sm:mb-2">
                   <ProductMenu />
                 </div>
               </motion.div>
@@ -242,7 +247,7 @@ export function Navigation() {
                       href={link.href}
                       onClick={() => setIsOpen(false)}
                       className={cn(
-                        'block px-4 py-3 rounded-xl text-base font-semibold transition-all duration-300',
+                        'block px-3 sm:px-4 py-3 rounded-xl text-sm sm:text-base font-semibold transition-all duration-300 min-h-[44px] flex items-center',
                         'relative',
                         isActive
                           ? 'text-blue-600 dark:text-blue-400 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20'

@@ -16,18 +16,18 @@ const icons: Record<string, any> = {
 
 export function Services() {
   return (
-    <section className="py-20 bg-white dark:bg-gray-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <LensHeading as="h2" className="text-4xl font-bold mb-4" magnify={2.5}>
+    <section className="py-12 sm:py-16 md:py-20 bg-white dark:bg-gray-800">
+      <div className="max-w-[90%] sm:max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+        <div className="text-center mb-8 sm:mb-10 md:mb-12">
+          <LensHeading as="h2" className="text-3xl sm:text-4xl font-bold mb-3 sm:mb-4" magnify={2.5}>
             Our Services
           </LensHeading>
-          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
             Explore our comprehensive range of fire safety services designed to keep your property safe and compliant.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 md:gap-8">
           {SERVICES.map((service) => {
             const Icon = icons[service.icon] || Shield;
             return (
