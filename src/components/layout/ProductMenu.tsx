@@ -144,11 +144,12 @@ export function ProductMenu({ className }: ProductMenuProps) {
       }}
     >
       {/* Products Button - Click to go to products page, hover to show dropdown */}
-      <div className="relative group">
-        <div
+      <div className="relative group" style={{ position: 'relative', zIndex: 10 }}>
+        <Link
+          href="/products"
           className={cn(
-            'flex items-center gap-1 px-3 sm:px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-300 cursor-pointer min-h-[44px]',
-            'group w-full md:w-auto',
+            'flex items-center gap-1 px-3 sm:px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-300 min-h-[44px]',
+            'group w-full md:w-auto relative',
             isOpen ? 'text-amber-600 dark:text-amber-400' : 'text-gray-700 dark:text-gray-300 hover:text-amber-600 dark:hover:text-amber-400'
           )}
           onMouseEnter={() => {
@@ -158,52 +159,32 @@ export function ProductMenu({ className }: ProductMenuProps) {
             }
           }}
           onClick={(e) => {
-            // On mobile, toggle dropdown on click
+            // On mobile, prevent navigation and toggle dropdown
             if (typeof window !== 'undefined' && window.innerWidth < 768) {
               e.preventDefault();
-              e.stopPropagation();
               setIsOpen(!isOpen);
             }
           }}
+          style={{ position: 'relative', zIndex: 20 }}
         >
-          <Link
-            href="/products"
-            className="flex items-center gap-1 flex-1 md:flex-initial"
-            onClick={(e) => {
-              // On mobile, prevent navigation if we're toggling dropdown
-              if (typeof window !== 'undefined' && window.innerWidth < 768) {
-                e.preventDefault();
-                e.stopPropagation();
-                setIsOpen(!isOpen);
-              }
-            }}
-          >
-            <span className="relative z-10">Products</span>
-          </Link>
+          <span className="relative z-30">Products</span>
           <ChevronDown 
             className={cn(
-              'w-4 h-4 transition-transform duration-300 flex-shrink-0',
+              'w-4 h-4 transition-transform duration-300 flex-shrink-0 relative z-30',
               isOpen ? 'rotate-180 text-amber-600' : 'group-hover:text-amber-600'
             )} 
-            onClick={(e) => {
-              // On mobile, toggle dropdown when clicking chevron
-              if (typeof window !== 'undefined' && window.innerWidth < 768) {
-                e.preventDefault();
-                e.stopPropagation();
-                setIsOpen(!isOpen);
-              }
-            }}
           />
           
           {/* Active Background */}
           {isOpen && (
             <motion.div
               layoutId="activeProductMenu"
-              className="absolute inset-0 bg-gradient-to-r from-amber-500/10 to-yellow-500/10 rounded-xl"
+              className="absolute inset-0 bg-gradient-to-r from-amber-500/10 to-yellow-500/10 rounded-xl pointer-events-none"
               transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+              style={{ zIndex: 1 }}
             />
           )}
-        </div>
+        </Link>
 
         {/* Dropdown Menu */}
         <AnimatePresence>
@@ -215,7 +196,7 @@ export function ProductMenu({ className }: ProductMenuProps) {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.2 }}
-                className="hidden md:block fixed inset-0 bg-black/10 backdrop-blur-sm z-[45]"
+                className="hidden md:block fixed inset-0 bg-black/10 backdrop-blur-sm z-[49]"
                 style={{ top: '80px' }}
                 onClick={() => setIsOpen(false)}
               />
@@ -226,7 +207,7 @@ export function ProductMenu({ className }: ProductMenuProps) {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3, ease: 'easeOut' }}
-                className="absolute top-full left-0 mt-2 w-full md:w-64 max-w-[calc(100vw-1rem)] sm:max-w-[calc(100vw-2rem)] md:max-w-none bg-white dark:bg-gray-900 rounded-xl sm:rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-800 z-[60] md:z-[50]"
+                className="absolute top-full left-0 mt-2 w-full md:w-64 max-w-[calc(100vw-1rem)] sm:max-w-[calc(100vw-2rem)] md:max-w-none bg-white dark:bg-gray-900 rounded-xl sm:rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-800 z-[55] md:z-[50]"
                 onMouseEnter={() => {
                   // On desktop, keep open on hover
                   if (typeof window !== 'undefined' && window.innerWidth >= 768) {
@@ -259,12 +240,12 @@ export function ProductMenu({ className }: ProductMenuProps) {
                   {productMenuItems.map((item) => {
                     const Icon = item.icon;
                     return (
-                      <Link
-                        key={item.label}
-                        href={item.href || '#'}
-                        onClick={(e) => handleLinkClick(e, item.href || '')}
-                        className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 md:py-2 rounded-md sm:rounded-lg transition-all duration-300 group text-gray-700 dark:text-gray-300 hover:bg-gradient-to-r hover:from-amber-50 hover:to-yellow-50 dark:hover:from-amber-900/20 dark:hover:to-yellow-900/20 hover:text-amber-600 dark:hover:text-amber-400 min-h-[32px] sm:min-h-[36px] md:min-h-[40px] text-xs sm:text-sm md:text-base"
-                      >
+                  <Link
+                    key={item.label}
+                    href={item.href || '#'}
+                    onClick={(e) => handleLinkClick(e, item.href || '')}
+                    className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 md:py-2 rounded-md sm:rounded-lg transition-all duration-300 group text-gray-700 dark:text-gray-300 hover:bg-gradient-to-r hover:from-amber-50 hover:to-yellow-50 dark:hover:from-amber-900/20 dark:hover:to-yellow-900/20 hover:text-amber-600 dark:hover:text-amber-400 min-h-[32px] sm:min-h-[36px] md:min-h-[40px] text-xs sm:text-sm md:text-base"
+                  >
                         {Icon && (
                           <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 text-gray-400 group-hover:text-amber-600 transition-colors duration-300 flex-shrink-0" />
                         )}

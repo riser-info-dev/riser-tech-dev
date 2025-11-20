@@ -29,7 +29,7 @@ echo "# riser-tech-dev"
 
 ### Prerequisites
 
-- Node.js 18+ installed
+- Node.js 18.17.0 or higher installed (Next.js 15 requires Node.js >=18.17.0)
 - npm or yarn package manager
 
 ### Installation

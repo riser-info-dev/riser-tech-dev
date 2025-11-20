@@ -44,7 +44,7 @@ export function AnimatedLogo() {
         <motion.span
           key={index}
           variants={letter}
-          className="text-2xl font-bold bg-gradient-to-r from-amber-600 to-yellow-600 bg-clip-text text-transparent inline-block cursor-default"
+          className="text-lg sm:text-xl md:text-2xl font-bold bg-gradient-to-r from-amber-600 to-yellow-600 bg-clip-text text-transparent inline-block cursor-default"
           whileHover={{ 
             scale: 1.3,
             rotateY: 360,
@@ -84,7 +84,7 @@ export function AnimatedLogo() {
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 1, type: 'spring', stiffness: 200 }}
-        className="ml-2 text-xs text-gray-500"
+        className="ml-1 sm:ml-2 text-[10px] sm:text-xs text-gray-500 hidden sm:inline"
       >
         Fire & Safety
       </motion.span>

@@ -9,22 +9,27 @@ import { VisitorTracker } from '@/components/features/VisitorTracker';
 import { CookieConsent } from '@/components/features/CookieConsent';
 import { ScrollToTop } from '@/components/features/ScrollToTop';
 import { CustomCursor } from '@/components/features/CustomCursor';
+import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { ReactNode } from 'react';
 
 export function AppProviders({ children }: { children: ReactNode }) {
   return (
-    <LoadingProvider>
-      <PageLoader />
-      <CustomCursor />
-      <LoadingContent>
-        <VisitorTracker />
-        <Header />
-        <main>{children}</main>
-        <Footer />
-        <CookieConsent />
-        <ScrollToTop />
-      </LoadingContent>
-    </LoadingProvider>
+    <ErrorBoundary>
+      <LoadingProvider>
+        <PageLoader />
+        <CustomCursor />
+        <LoadingContent>
+          <ErrorBoundary>
+            <VisitorTracker />
+          </ErrorBoundary>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+          <CookieConsent />
+          <ScrollToTop />
+        </LoadingContent>
+      </LoadingProvider>
+    </ErrorBoundary>
   );
 }
 

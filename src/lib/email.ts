@@ -3,6 +3,19 @@ import { EnquiryData } from '@/types';
 
 const isSMTPEnabled = process.env.ENABLE_SMTP === 'true';
 
+/**
+ * Escapes HTML entities to prevent XSS attacks
+ */
+function escapeHtml(text: string | undefined): string {
+  if (!text) return '';
+  return text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
 let transporter: nodemailer.Transporter | null = null;
 
 if (isSMTPEnabled) {
@@ -26,31 +39,38 @@ export async function sendEnquiryEmail(data: EnquiryData): Promise<{ success: bo
   }
 
   try {
+    // Sanitize all user inputs to prevent XSS
+    const sanitizedName = escapeHtml(data.name);
+    const sanitizedEmail = escapeHtml(data.email);
+    const sanitizedContact = escapeHtml(data.contact);
+    const sanitizedService = escapeHtml(data.service);
+    const sanitizedMessage = escapeHtml(data.message);
+
     const mailOptions = {
       from: process.env.SMTP_FROM || process.env.SMTP_USER,
       to: process.env.SMTP_TO || process.env.SMTP_USER,
-      subject: `New Enquiry from ${data.name} - ${data.service || 'General Inquiry'}`,
+      subject: `New Enquiry from ${sanitizedName} - ${sanitizedService || 'General Inquiry'}`,
       html: `
         <h2>New Enquiry Received</h2>
-        <p><strong>Name:</strong> ${data.name}</p>
-        <p><strong>Email:</strong> ${data.email}</p>
-        <p><strong>Contact:</strong> ${data.contact}</p>
-        <p><strong>Service Interest:</strong> ${data.service || 'Not specified'}</p>
+        <p><strong>Name:</strong> ${sanitizedName}</p>
+        <p><strong>Email:</strong> ${sanitizedEmail}</p>
+        <p><strong>Contact:</strong> ${sanitizedContact}</p>
+        <p><strong>Service Interest:</strong> ${sanitizedService || 'Not specified'}</p>
         <p><strong>Message:</strong></p>
-        <p>${data.message || 'No message provided'}</p>
+        <p>${sanitizedMessage || 'No message provided'}</p>
         <hr>
         <p><small>Sent from RiserTech Contact Form</small></p>
       `,
       text: `
 New Enquiry Received
 
-Name: ${data.name}
-Email: ${data.email}
-Contact: ${data.contact}
-Service Interest: ${data.service || 'Not specified'}
+Name: ${sanitizedName}
+Email: ${sanitizedEmail}
+Contact: ${sanitizedContact}
+Service Interest: ${sanitizedService || 'Not specified'}
 
 Message:
-${data.message || 'No message provided'}
+${sanitizedMessage || 'No message provided'}
 
 Sent from RiserTech Contact Form
       `,

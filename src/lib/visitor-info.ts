@@ -66,7 +66,7 @@ export async function getLocationFromIP(ip: string): Promise<string> {
       return 'Unknown';
     }
     
-    const response = await fetch(`http://ip-api.com/json/${cleanIP}?fields=status,country,city`, {
+    const response = await fetch(`https://ip-api.com/json/${cleanIP}?fields=status,country,city`, {
       signal: AbortSignal.timeout(5000), // 5 second timeout
     });
     

@@ -1,48 +1,51 @@
-# Quick Start Guide
+# Quick Start Guide - RiserTech Website
 
-## 1. Install Dependencies
+## 🚀 Quick Setup (3 Minutes)
 
+### 1. Install Dependencies (1 minute)
 ```bash
 npm install
 ```
 
-## 2. Start Development Server
+### 2. Configure Environment Variables (1 minute)
+Create a `.env.local` file in the root directory:
 
+```env
+# SMTP Configuration (Optional - Set ENABLE_SMTP=false to disable)
+ENABLE_SMTP=false
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=your-email@gmail.com
+SMTP_PASS=your-app-password
+SMTP_FROM=noreply@risertech.com
+SMTP_TO=info@risertech.com
+
+# IP Geolocation (Optional)
+IP_GEOLOCATION_ENABLED=false
+
+# App Configuration
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+```
+
+### 3. Run Development Server (1 minute)
 ```bash
 npm run dev
 ```
 
-## 3. Open Browser
+## ✅ That's It!
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Open [http://localhost:3000](http://localhost:3000) in your browser to see the website!
 
-## Available Pages
+## 📝 Important Notes
 
-- **Home**: http://localhost:3000/
-- **About**: http://localhost:3000/about
-- **Services**: http://localhost:3000/services
-- **Projects**: http://localhost:3000/projects
-- **Contact**: http://localhost:3000/contact
-- **Cookie Policy**: http://localhost:3000/cookie-policy
+1. **SMTP is Optional**: The site works without SMTP. Enquiries will be logged to files in the `logs/` directory
+2. **Port**: The app runs on `http://localhost:3000` by default
+3. **Logs**: Visitor and enquiry logs are automatically created in the `logs/` directory
 
-## If Pages Don't Load
+## 🐛 Troubleshooting
 
-1. Check the terminal for errors
-2. Verify the dev server is running (should show "Ready" message)
-3. Check browser console (F12) for errors
-4. Try hard refresh: `Ctrl + Shift + R`
-5. Clear browser cache
+- **Port already in use?** Next.js will automatically use the next available port (3001, 3002, etc.)
+- **Dependencies not installing?** Try deleting `node_modules` and `package-lock.json`, then run `npm install` again
+- **Build errors?** Make sure you're using Node.js 18 or higher
 
-## Build for Production
-
-```bash
-npm run build
-npm start
-```
-
-## Run Tests
-
-```bash
-npm test
-```
-
+For detailed setup and configuration, see `README.md` or `SETUP_GUIDE.md`

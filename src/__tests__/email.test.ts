@@ -62,6 +62,10 @@ describe('Email Service', () => {
     });
 
     it('should handle email send errors gracefully', async () => {
+      // Suppress console.error during this test
+      const originalError = console.error;
+      console.error = jest.fn();
+
       process.env.ENABLE_SMTP = 'true';
       process.env.SMTP_HOST = 'smtp.gmail.com';
       process.env.SMTP_PORT = '587';
@@ -79,6 +83,9 @@ describe('Email Service', () => {
 
       expect(result.success).toBe(false);
       expect(result.message).toContain('Failed to send email');
+      
+      // Restore console.error
+      console.error = originalError;
     });
   });
 });

@@ -59,3 +59,42 @@ body {
   transform: scale(1.02);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
+
+/* VALVES section - Reduce card height by 10% */
+.valves-card .product-image {
+  height: 172.8px !important; /* 90% of 192px (h-48) */
+}
+
+@media (min-width: 640px) {
+  .valves-card .product-image {
+    height: 201.6px !important; /* 90% of 224px (h-56) */
+  }
+}
+
+@media (min-width: 768px) {
+  .valves-card .product-image {
+    height: 230.4px !important; /* 90% of 256px (h-64) */
+  }
+}
+
+@media (min-width: 1024px) {
+  .valves-card .product-image {
+    height: 259.2px !important; /* 90% of 288px (h-72) */
+  }
+}
+
+.valves-card .product-content {
+  padding: 0.75rem; /* 90% of 1rem (p-4) */
+}
+
+@media (min-width: 640px) {
+  .valves-card .product-content {
+    padding: 1rem; /* 90% of 1.25rem (p-5) */
+  }
+}
+
+@media (min-width: 768px) {
+  .valves-card .product-content {
+    padding: 1.125rem; /* 90% of 1.25rem (p-5) */
+  }
+}

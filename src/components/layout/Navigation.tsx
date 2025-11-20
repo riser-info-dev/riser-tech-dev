@@ -70,22 +70,25 @@ export function Navigation() {
                     ? 'text-blue-600 dark:text-blue-400'
                     : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'
                 )}
+                style={{ position: 'relative', zIndex: 10 }}
               >
-                <span className="relative z-10">Home</span>
+                <span className="relative z-20">Home</span>
                 
                 {/* Active Background */}
                 {pathname === '/' && (
                   <motion.div
                     layoutId="activeNav"
-                    className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 rounded-xl"
+                    className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 rounded-xl pointer-events-none"
                     transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    style={{ zIndex: 1 }}
                   />
                 )}
                 
                 {/* Hover Background */}
                 {pathname !== '/' && (
                   <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                    style={{ zIndex: 1 }}
                   />
                 )}
                 
@@ -95,8 +98,9 @@ export function Navigation() {
                     'absolute bottom-0 left-1/2 -translate-x-1/2 h-1 w-8 rounded-full',
                     'bg-gradient-to-r from-blue-600 to-indigo-600',
                     pathname === '/' ? 'opacity-100' : 'opacity-0 group-hover:opacity-100 scale-x-0 group-hover:scale-x-100',
-                    'transition-all duration-300'
+                    'transition-all duration-300 pointer-events-none'
                   )}
+                  style={{ zIndex: 1 }}
                 />
               </Link>
             </motion.div>
@@ -129,22 +133,25 @@ export function Navigation() {
                         ? 'text-blue-600 dark:text-blue-400'
                         : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'
                     )}
+                    style={{ position: 'relative', zIndex: 10 }}
                   >
-                    <span className="relative z-10">{link.label}</span>
+                    <span className="relative z-20">{link.label}</span>
                     
                     {/* Active Background */}
                     {isActive && (
                       <motion.div
                         layoutId="activeNav"
-                        className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 rounded-xl"
+                        className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 rounded-xl pointer-events-none"
                         transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                        style={{ zIndex: 1 }}
                       />
                     )}
                     
                     {/* Hover Background */}
                     {!isActive && (
                       <motion.div
-                        className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                        style={{ zIndex: 1 }}
                       />
                     )}
                     
@@ -154,8 +161,9 @@ export function Navigation() {
                         'absolute bottom-0 left-1/2 -translate-x-1/2 h-1 w-8 rounded-full',
                         'bg-gradient-to-r from-blue-600 to-indigo-600',
                         isActive ? 'opacity-100' : 'opacity-0 group-hover:opacity-100 scale-x-0 group-hover:scale-x-100',
-                        'transition-all duration-300'
+                        'transition-all duration-300 pointer-events-none'
                       )}
+                      style={{ zIndex: 1 }}
                     />
                   </Link>
                 </motion.div>
@@ -166,8 +174,9 @@ export function Navigation() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors relative"
+            className="md:hidden p-2 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors relative z-[60]"
             aria-label="Toggle menu"
+            type="button"
           >
             <motion.div
               animate={{ rotate: isOpen ? 90 : 0 }}

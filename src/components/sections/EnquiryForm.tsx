@@ -43,9 +43,13 @@ export function EnquiryForm() {
         body: JSON.stringify(data),
       });
 
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
       const result = await response.json();
 
-      if (response.ok) {
+      if (result.success) {
         setSubmitStatus({
           type: 'success',
           message: result.message || 'Thank you! Your enquiry has been submitted successfully.',
@@ -58,9 +62,13 @@ export function EnquiryForm() {
         });
       }
     } catch (error) {
+      // Only log in development
+      if (process.env.NODE_ENV === 'development') {
+        console.warn('Enquiry submission error:', error);
+      }
       setSubmitStatus({
         type: 'error',
-        message: 'Failed to submit enquiry. Please try again later.',
+        message: 'Failed to submit enquiry. Please check your connection and try again.',
       });
     } finally {
       setIsSubmitting(false);

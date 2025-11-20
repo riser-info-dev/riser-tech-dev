@@ -50,7 +50,7 @@ export const SERVICES: Array<{
 ];
 
 export const COMPANY_INFO = {
-  name: 'Riser Tech',
+  name: 'Riser Technologies',
   tagline: 'Fire & Safety Solutions',
   phone: '9787666104',
   email: 'risertechno@gmail.com',

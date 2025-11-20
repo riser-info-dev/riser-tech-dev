@@ -44,6 +44,60 @@ const heroSlides = [
     gradient: 'from-gray-900 via-slate-800 to-amber-800',
     overlay: 'rgba(0, 0, 0, 0.5)',
   },
+  {
+    id: 5,
+    title: 'SUPPRESSION SYSTEMS',
+    subtitle: 'Advanced Fire Suppression',
+    description: 'State-of-the-art fire suppression systems designed to quickly extinguish fires and protect your property. Professional installation and maintenance services available in Chennai.',
+    image: '/images/hero/hero-5.jpg',
+    gradient: 'from-amber-900 via-red-900 to-orange-900',
+    overlay: 'rgba(0, 0, 0, 0.5)',
+  },
+  {
+    id: 6,
+    title: 'Gas Suppression System',
+    subtitle: 'Gas Suppression System',
+    description: 'Clean agent fire suppression for critical areas. Fast-acting protection without water damage. Ideal for server rooms, data centers, and sensitive equipment. Zero residue, safe for electronics. Expert installation and maintenance in Chennai.',
+    image: '/images/hero/hero-6.jpg',
+    gradient: 'from-blue-900 via-indigo-900 to-purple-900',
+    overlay: 'rgba(0, 0, 0, 0.5)',
+  },
+  {
+    id: 7,
+    title: 'Gas Suppression System',
+    subtitle: 'Total Flooding Fluoroketone (FK) Based Fire Suppression System',
+    description: 'Advanced FK-based gas suppression system for complete fire protection. Environmentally friendly, zero ozone depletion. Fast discharge, total flooding coverage. Ideal for data centers, server rooms, and critical facilities in Chennai. Certified installation and maintenance services.',
+    image: '/images/hero/hero-7.jpg',
+    gradient: 'from-cyan-900 via-blue-900 to-indigo-900',
+    overlay: 'rgba(0, 0, 0, 0.5)',
+  },
+  {
+    id: 8,
+    title: 'KITCHEN FIRE SUPPRESSION',
+    subtitle: 'LPCB Certified Commercial Kitchen Suppression System (Wet Chemical Based)',
+    description: 'LPCB certified wet chemical kitchen fire suppression system. Automatic detection and suppression for commercial kitchens in Chennai. Protects cooking equipment, hoods, and ducts. Fast-acting wet chemical agent. Professional installation and maintenance for restaurants and hotels.',
+    image: '/images/hero/hero-8.jpg',
+    gradient: 'from-orange-900 via-red-900 to-amber-900',
+    overlay: 'rgba(0, 0, 0, 0.5)',
+  },
+  {
+    id: 9,
+    title: 'CQRS',
+    subtitle: "Ceasefire's Quick Response System",
+    description: 'Ceasefire Quick Response System for rapid fire detection and suppression. Advanced technology for fast response times. Reliable fire safety solution for commercial and industrial properties in Chennai. Professional installation, testing, and maintenance services available.',
+    image: '/images/hero/hero-9.jpg',
+    gradient: 'from-green-900 via-emerald-900 to-teal-900',
+    overlay: 'rgba(0, 0, 0, 0.5)',
+  },
+  {
+    id: 10,
+    title: 'ALARM SOLUTIONS',
+    subtitle: 'Fire alarm system',
+    description: 'Professional fire alarm system installation in Chennai. Addressable and conventional fire alarm systems. Smoke detectors, heat detectors, and manual call points. 24/7 monitoring and maintenance. Tamil Nadu fire safety compliance. Expert fire alarm installation services for commercial and residential properties.',
+    image: '/images/hero/hero-10.jpg',
+    gradient: 'from-purple-900 via-pink-900 to-rose-900',
+    overlay: 'rgba(0, 0, 0, 0.5)',
+  },
 ];
 
 const stats = [
@@ -159,7 +213,7 @@ export function Hero() {
                     fill
                     className="object-cover"
                     priority={index === 0}
-                    sizes="100vw"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 100vw"
                     onError={() => handleImageError(slide.id)}
                     quality={90}
                     unoptimized={process.env.NODE_ENV === 'development'}
@@ -336,23 +390,23 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Modern Navigation Arrows */}
+      {/* Modern Navigation Arrows - Mobile Optimized */}
       <button
         onClick={prevSlide}
-        className="absolute left-2 sm:left-4 md:left-6 top-1/2 -translate-y-1/2 z-30 group touch-manipulation"
+        className="absolute left-1 sm:left-2 md:left-4 lg:left-6 top-1/2 -translate-y-1/2 z-30 group touch-manipulation"
         aria-label="Previous slide"
       >
-        <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 hover:border-amber-400/50 active:bg-white/30 active:scale-95 transition-all duration-300 flex items-center justify-center shadow-lg sm:shadow-xl hover:shadow-2xl hover:scale-110 active:scale-95">
-          <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-white group-hover:text-amber-300 transition-colors duration-300" />
+        <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 hover:border-amber-400/50 active:bg-white/30 active:scale-95 transition-all duration-300 flex items-center justify-center shadow-lg sm:shadow-xl hover:shadow-2xl hover:scale-110 active:scale-95">
+          <ChevronLeft className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 text-white group-hover:text-amber-300 transition-colors duration-300" />
         </div>
       </button>
       <button
         onClick={nextSlide}
-        className="absolute right-2 sm:right-4 md:right-6 top-1/2 -translate-y-1/2 z-30 group touch-manipulation"
+        className="absolute right-1 sm:right-2 md:right-4 lg:right-6 top-1/2 -translate-y-1/2 z-30 group touch-manipulation"
         aria-label="Next slide"
       >
-        <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 hover:border-amber-400/50 active:bg-white/30 active:scale-95 transition-all duration-300 flex items-center justify-center shadow-lg sm:shadow-xl hover:shadow-2xl hover:scale-110 active:scale-95">
-          <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-white group-hover:text-amber-300 transition-colors duration-300" />
+        <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 rounded-full bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 hover:border-amber-400/50 active:bg-white/30 active:scale-95 transition-all duration-300 flex items-center justify-center shadow-lg sm:shadow-xl hover:shadow-2xl hover:scale-110 active:scale-95">
+          <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 text-white group-hover:text-amber-300 transition-colors duration-300" />
         </div>
       </button>
 
@@ -369,7 +423,7 @@ export function Hero() {
         </div>
 
         {/* Slide Dots */}
-        <div className="flex gap-2 sm:gap-2.5 md:gap-3 items-center">
+        <div className="flex gap-1.5 sm:gap-2 md:gap-2.5 items-center">
           {heroSlides.map((_, index) => (
             <button
               key={index}
@@ -377,10 +431,10 @@ export function Hero() {
               className="group relative touch-manipulation"
               aria-label={`Go to slide ${index + 1}`}
             >
-              <div className={`relative h-1.5 sm:h-2 rounded-full transition-all duration-500 ${
+              <div className={`relative rounded-full transition-all duration-300 ${
                 index === currentSlide 
-                  ? 'bg-white w-8 sm:w-10 md:w-12' 
-                  : 'bg-white/40 hover:bg-white/60 active:bg-white/80 w-6 sm:w-7 md:w-8'
+                  ? 'w-2 h-2 sm:w-2.5 sm:h-2.5 md:w-3 md:h-3 bg-white shadow-md shadow-amber-500/50' 
+                  : 'w-1.5 h-1.5 sm:w-2 sm:h-2 md:w-2.5 md:h-2.5 bg-white/40 hover:bg-white/60 active:bg-white/80'
               }`}>
                 {index === currentSlide && (
                   <motion.div

@@ -1,6 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { logVisitor } from '@/lib/logger';
 import { collectVisitorData, getLocationFromIP } from '@/lib/visitor-info';
+import { rateLimit, RATE_LIMITS } from '@/lib/rate-limit';
+import { z } from 'zod';
+
+// Validation schema for track visitor
+const trackVisitorSchema = z.object({
+  page: z.string().max(500).optional(),
+  referrer: z.string().max(1000).optional(),
+  userAgent: z.string().max(1000).optional(),
+  language: z.string().max(10).optional(),
+});
+
+// Maximum request body size: 5KB
+const MAX_BODY_SIZE = 5 * 1024;
 
 function isValidIP(ip: string): boolean {
   if (!ip || ip === 'Unknown' || ip === '::1' || ip === '127.0.0.1') {
@@ -78,8 +91,39 @@ function getClientIP(request: NextRequest): string {
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
-    const { page, referrer, userAgent, language } = body;
+    // Rate limiting
+    const rateLimitResult = await rateLimit(
+      request,
+      RATE_LIMITS.TRACKING.maxRequests,
+      RATE_LIMITS.TRACKING.windowMs
+    );
+
+    if (!rateLimitResult.allowed) {
+      // Silent fail for tracking - don't break user experience
+      return NextResponse.json({ success: false }, { status: 429 });
+    }
+
+    // Check content length
+    const contentLength = request.headers.get('content-length');
+    if (contentLength && parseInt(contentLength) > MAX_BODY_SIZE) {
+      return NextResponse.json({ success: false }, { status: 413 });
+    }
+
+    // Parse and validate body
+    const text = await request.text();
+    if (text.length > MAX_BODY_SIZE) {
+      return NextResponse.json({ success: false }, { status: 413 });
+    }
+
+    const body = JSON.parse(text);
+
+    // Validate input
+    const validationResult = trackVisitorSchema.safeParse(body);
+    if (!validationResult.success) {
+      return NextResponse.json({ success: false }, { status: 400 });
+    }
+
+    const { page, referrer, userAgent, language } = validationResult.data;
 
     const ip = getClientIP(request);
     const location = await getLocationFromIP(ip);
@@ -95,7 +139,15 @@ export async function POST(request: NextRequest) {
 
     logVisitor(visitorData);
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json(
+      { success: true },
+      {
+        headers: {
+          'X-RateLimit-Limit': RATE_LIMITS.TRACKING.maxRequests.toString(),
+          'X-RateLimit-Remaining': rateLimitResult.remaining.toString(),
+        },
+      }
+    );
   } catch (error) {
     console.error('Error tracking visitor:', error);
     return NextResponse.json({ success: false }, { status: 500 });

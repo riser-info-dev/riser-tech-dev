@@ -6,6 +6,9 @@ import { ProductSection } from '@/components/sections/ProductSection';
 import { ProductCard3D } from '@/components/sections/ProductCard3D';
 import { ProductSlide } from '@/components/sections/ProductSlide';
 import { ProductCardSlider } from '@/components/sections/ProductCardSlider';
+import { PRODUCT_CATEGORIES } from '@/lib/products';
+import Link from 'next/link';
+import { Button3D } from '@/components/ui/Button3D';
 
 // Product data
 const fireExtinguishers = [
@@ -218,28 +221,6 @@ const valves = [
   },
 ];
 
-const services = [
-  {
-    id: '1',
-    title: 'Fire System Installation',
-    description: 'Professional installation of fire safety systems by certified technicians.',
-    image: '/images/services/installation-1.jpg',
-  },
-  {
-    id: '2',
-    title: 'Maintenance & AMC',
-    description: 'Comprehensive maintenance and Annual Maintenance Contract services for fire systems.',
-    image: '/images/services/maintenance-1.jpg',
-  },
-  {
-    id: '3',
-    title: 'Refilling Services',
-    description: 'Expert refilling services for fire extinguishers and suppression systems.',
-    image: '/images/services/refilling-1.jpg',
-  },
-];
-
-
 export default function ProductsPage() {
   useEffect(() => {
     // Handle smooth scroll to section on page load if hash is present
@@ -266,7 +247,7 @@ export default function ProductsPage() {
       {/* Section 1: Our Full Spectrum Fire Solutions */}
       <section
         id="full-spectrum"
-        className="relative pt-24 pb-12 md:pt-28 md:pb-16 lg:pt-32 lg:pb-20 scroll-mt-20 overflow-hidden"
+        className="relative pt-20 sm:pt-24 pb-8 sm:pb-12 md:pt-28 md:pb-16 lg:pt-32 lg:pb-20 scroll-mt-20 overflow-hidden"
       >
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
@@ -292,71 +273,60 @@ export default function ProductsPage() {
               className="space-y-2 md:space-y-3 lg:space-y-4 text-sm md:text-base lg:text-lg text-white text-center"
             >
               <div>
-                <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-2 md:mb-3 lg:mb-4 text-white">OUR VISION</h1>
-                <p className="text-base md:text-lg lg:text-xl font-semibold mb-2 md:mb-3 lg:mb-4 text-white">
+                <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2 sm:mb-2 md:mb-3 lg:mb-4 text-white break-words">
+                  Fire Safety Products in Chennai
+                </h1>
+                <p className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold mb-2 sm:mb-2 md:mb-3 lg:mb-4 text-white">
                   Your Safety, Our Commitment.
                 </p>
               </div>
               <p className="text-white/90 leading-relaxed text-xs md:text-sm lg:text-base">
                 At RiserTech, we are driven by a singular purpose — to build a safer planet for everyone.
-In the battle against fire, there are no second chances. Every second counts, and every product we design is built with that responsibility in mind.
+                In the battle against fire, there are no second chances. Every second counts, and every product we design is built with that responsibility in mind.
 
-Through relentless innovation, advanced engineering, and uncompromising quality, we create life-saving fire protection systems that perform flawlessly when it matters most.
-Our commitment goes beyond technology — it's about protecting people, their communities, and their livelihoods.
+                Through relentless innovation, advanced engineering, and uncompromising quality, we create life-saving fire protection systems that perform flawlessly when it matters most.
+                Our commitment goes beyond technology — it's about protecting people, their communities, and their livelihoods.
 
-At RiserTech, safety isn't just our business — it's our promise to the world.</p>
+                At RiserTech, safety isn't just our business — it's our promise to the world.
+              </p>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Section 2: Fire Extinguishers */}
-      <ProductSection
-        id="fire-extinguishers"
-        title="FIRE EXTINGUISHERS"
-        description="Comprehensive range of fire extinguishers for all fire classes"
-      >
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {fireExtinguishers.map((product, index) => (
-            <ProductCard3D
-              key={product.id}
-              title={product.title}
-              description={product.description}
-              image={product.image}
-              imageAlt={product.title}
-              delay={index * 0.1}
-            />
-          ))}
+      {/* Quick Links to Product Categories */}
+      <section className="py-8 sm:py-10 md:py-12 bg-gray-100 dark:bg-gray-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-center text-gray-900 dark:text-white">
+            Browse Our Product Categories
+          </h2>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+            {PRODUCT_CATEGORIES.map((category) => {
+              const CategoryIcon = category.icon;
+              return (
+                <Link
+                  key={category.id}
+                  href={`/products/${category.slug}`}
+                  className="flex flex-col items-center p-3 sm:p-4 bg-white dark:bg-gray-700 rounded-lg hover:shadow-lg transition-shadow min-h-[80px] sm:min-h-[100px] justify-center"
+                >
+                  <CategoryIcon className="w-6 h-6 sm:w-8 sm:h-8 mb-1 sm:mb-2 text-amber-600" />
+                  <span className="text-xs sm:text-sm font-semibold text-center text-gray-900 dark:text-white leading-tight px-1">
+                    {category.name}
+                  </span>
+                </Link>
+              );
+            })}
+          </div>
         </div>
-      </ProductSection>
+      </section>
 
-      {/* Section 3: Sprinklers */}
-      <ProductSection
-        id="sprinklers"
-        title="SPRINKLERS"
-        description="Advanced sprinkler systems for comprehensive fire protection"
-      >
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-          {sprinklers.map((product, index) => (
-            <ProductCard3D
-              key={product.id}
-              title={product.title}
-              description={product.description}
-              image={product.image}
-              imageAlt={product.title}
-              delay={index * 0.1}
-            />
-          ))}
-        </div>
-      </ProductSection>
-
-      {/* Section 4: Fire Suppression Systems */}
+      {/* Section 1: Fire Suppression Systems */}
       <ProductSection
         id="fire-suppression-systems"
         title="FIRE SUPPRESSION SYSTEMS"
         description="Advanced fire suppression solutions for critical applications"
       >
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
           {fireSuppressionSystems.map((product, index) => (
             <ProductCard3D
               key={product.id}
@@ -370,7 +340,29 @@ At RiserTech, safety isn't just our business — it's our promise to the world.<
         </div>
       </ProductSection>
 
-      {/* Section 5: Hydrants & Accessories */}
+      {/* Section 2: Valves */}
+      <ProductSection
+        id="valves"
+        title="VALVES"
+        description="High-quality valves for fire protection systems"
+        variant="gradient"
+      >
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+          {valves.map((product, index) => (
+            <ProductCard3D
+              key={product.id}
+              title={product.title}
+              description={product.description}
+              image={product.image}
+              imageAlt={product.title}
+              delay={index * 0.1}
+              className="valves-card"
+            />
+          ))}
+        </div>
+      </ProductSection>
+
+      {/* Section 3: Hydrants & Accessories */}
       <ProductSection
         id="hydrants-accessories"
         title="HYDRANTS & ACCESSORIES"
@@ -386,14 +378,34 @@ At RiserTech, safety isn't just our business — it's our promise to the world.<
         />
       </ProductSection>
 
-      {/* Section 7: Alarm Solutions */}
+      {/* Section 4: Sprinklers */}
+      <ProductSection
+        id="sprinklers"
+        title="SPRINKLERS"
+        description="Advanced sprinkler systems for comprehensive fire protection"
+      >
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+          {sprinklers.map((product, index) => (
+            <ProductCard3D
+              key={product.id}
+              title={product.title}
+              description={product.description}
+              image={product.image}
+              imageAlt={product.title}
+              delay={index * 0.1}
+            />
+          ))}
+        </div>
+      </ProductSection>
+
+      {/* Section 5: Alarm Solutions */}
       <ProductSection
         id="alarm-solutions"
         title="ALARM SOLUTIONS"
         description="Advanced fire detection and alarm systems"
         variant="gradient"
       >
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
           {alarmSolutions.map((product, index) => (
             <ProductCard3D
               key={product.id}
@@ -407,14 +419,14 @@ At RiserTech, safety isn't just our business — it's our promise to the world.<
         </div>
       </ProductSection>
 
-      {/* Section 8: Valves */}
+      {/* Section 6: Fire Extinguishers */}
       <ProductSection
-        id="valves"
-        title="VALVES"
-        description="High-quality valves for fire protection systems"
+        id="fire-extinguishers"
+        title="FIRE EXTINGUISHERS"
+        description="Comprehensive range of fire extinguishers for all fire classes"
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-          {valves.map((product, index) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+          {fireExtinguishers.map((product, index) => (
             <ProductCard3D
               key={product.id}
               title={product.title}
@@ -426,16 +438,6 @@ At RiserTech, safety isn't just our business — it's our promise to the world.<
           ))}
         </div>
       </ProductSection>
-
-      {/* Section 9: Services */}
-      {/* <ProductSection
-        id="services"
-        title="SERVICES"
-        description="Professional fire safety services and support"
-        variant="dark"
-      >
-        <ProductSlide items={services} />
-      </ProductSection> */}
     </div>
   );
 }

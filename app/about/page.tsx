@@ -23,6 +23,10 @@ export default function AboutPage() {
             priority
             sizes="100vw"
             unoptimized={process.env.NODE_ENV === 'development'}
+            onError={(e) => {
+              console.error('Image failed to load');
+              e.currentTarget.style.display = 'none';
+            }}
           />
           
           {/* Overlay - Enhanced gradient for text readability and sunset effect */}

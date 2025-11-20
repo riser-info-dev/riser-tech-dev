@@ -30,7 +30,7 @@ export function ProductSection({
   return (
     <section
       id={id}
-      className={cn('py-20 scroll-mt-20', variants[variant], className)}
+      className={cn('py-12 sm:py-16 md:py-20 scroll-mt-20', variants[variant], className)}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
@@ -38,13 +38,13 @@ export function ProductSection({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-8 sm:mb-10 md:mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4">
             {title}
           </h2>
           {description && (
-            <p className="text-lg md:text-xl max-w-3xl mx-auto opacity-90">
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl max-w-3xl mx-auto opacity-90 px-2">
               {description}
             </p>
           )}

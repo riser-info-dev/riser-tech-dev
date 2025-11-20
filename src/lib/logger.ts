@@ -4,6 +4,19 @@ import { VisitorData, EnquiryData } from '@/types';
 
 const LOGS_DIR = path.join(process.cwd(), 'logs');
 
+/**
+ * Sanitizes input to prevent log injection attacks
+ * Removes newlines and other control characters that could be used to manipulate log files
+ */
+function sanitizeLogInput(input: string | undefined): string {
+  if (!input) return '';
+  return input
+    .replace(/\r/g, '')
+    .replace(/\n/g, ' ')
+    .replace(/\t/g, ' ')
+    .trim();
+}
+
 function ensureLogsDirectory(): void {
   if (!fs.existsSync(LOGS_DIR)) {
     fs.mkdirSync(LOGS_DIR, { recursive: true });
@@ -27,16 +40,16 @@ export function logVisitor(data: VisitorData): void {
     
     const logEntry = `
 [${formatTimestamp()}]
-IP: ${data.ip}
-Location: ${data.location || 'Unknown'}
-Browser: ${data.browser}
-OS: ${data.os}
-Device: ${data.device}
-Page: ${data.page}
-Referrer: ${data.referrer || 'Direct'}
-User Agent: ${data.userAgent}
-Language: ${data.language}
-Timezone: ${data.timezone || 'Unknown'}
+IP: ${sanitizeLogInput(data.ip)}
+Location: ${sanitizeLogInput(data.location)}
+Browser: ${sanitizeLogInput(data.browser)}
+OS: ${sanitizeLogInput(data.os)}
+Device: ${sanitizeLogInput(data.device)}
+Page: ${sanitizeLogInput(data.page)}
+Referrer: ${sanitizeLogInput(data.referrer)}
+User Agent: ${sanitizeLogInput(data.userAgent)}
+Language: ${sanitizeLogInput(data.language)}
+Timezone: ${sanitizeLogInput(data.timezone)}
 ---
 `;
 
@@ -54,12 +67,12 @@ export function logEnquiry(data: EnquiryData, status: string): void {
     
     const logEntry = `
 [${formatTimestamp()}]
-Name: ${data.name}
-Email: ${data.email}
-Contact: ${data.contact}
-Service: ${data.service || 'Not specified'}
-Message: ${data.message || 'No message'}
-Status: ${status}
+Name: ${sanitizeLogInput(data.name)}
+Email: ${sanitizeLogInput(data.email)}
+Contact: ${sanitizeLogInput(data.contact)}
+Service: ${sanitizeLogInput(data.service) || 'Not specified'}
+Message: ${sanitizeLogInput(data.message) || 'No message'}
+Status: ${sanitizeLogInput(status)}
 ---
 `;
 
