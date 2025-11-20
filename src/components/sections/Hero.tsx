@@ -55,7 +55,7 @@ const heroSlides = [
   },
   // {
   //   id: 6,
-  //   title: 'Gas Suppression System',
+  //   title: 'GasSuppressionSystem',
   //   subtitle: '',
   //   description: 'Clean agent fire suppression for critical areas. Fast-acting protection without water damage. Ideal for server rooms, data centers, and sensitive equipment. Zero residue, safe for electronics. Expert installation and maintenance in Chennai.',
   //   image: '/images/hero/hero-6.jpg',
