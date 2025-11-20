@@ -35,7 +35,7 @@ export function Navigation() {
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+        'fixed top-0 left-0 right-0 z-50 transition-all duration-300 pointer-events-auto',
         scrolled
           ? 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl shadow-lg border-b border-gray-200/50 dark:border-gray-800/50'
           : 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-md'
@@ -54,7 +54,7 @@ export function Navigation() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-1">
+          <div className="hidden md:flex items-center space-x-1 relative z-20">
             {/* Home Link */}
             <motion.div
               initial={{ opacity: 0, y: -20 }}
@@ -64,15 +64,15 @@ export function Navigation() {
               <Link
                 href="/"
                 className={cn(
-                  'relative px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-300',
+                  'relative px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-300 pointer-events-auto',
                   'group',
                   pathname === '/'
                     ? 'text-blue-600 dark:text-blue-400'
                     : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'
                 )}
-                style={{ position: 'relative', zIndex: 10 }}
+                style={{ position: 'relative', zIndex: 20 }}
               >
-                <span className="relative z-20">Home</span>
+                <span className="relative z-30 pointer-events-none">Home</span>
                 
                 {/* Active Background */}
                 {pathname === '/' && (
@@ -127,15 +127,15 @@ export function Navigation() {
                   <Link
                     href={link.href}
                     className={cn(
-                      'relative px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-300',
+                      'relative px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-300 pointer-events-auto',
                       'group',
                       isActive
                         ? 'text-blue-600 dark:text-blue-400'
                         : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'
                     )}
-                    style={{ position: 'relative', zIndex: 10 }}
+                    style={{ position: 'relative', zIndex: 20 }}
                   >
-                    <span className="relative z-20">{link.label}</span>
+                    <span className="relative z-30 pointer-events-none">{link.label}</span>
                     
                     {/* Active Background */}
                     {isActive && (

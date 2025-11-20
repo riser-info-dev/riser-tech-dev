@@ -130,3 +130,4 @@ For production, consider:
 **Bottom Line:** Your logs folder setup is **100% correct**. The folder is missing from GitHub because it should be! Log files contain sensitive data and should never be committed to version control.
 
 
+

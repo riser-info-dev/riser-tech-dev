@@ -49,19 +49,19 @@ const heroSlides = [
     title: 'SUPPRESSION SYSTEMS',
     subtitle: 'Advanced Fire Suppression',
     description: 'State-of-the-art fire suppression systems designed to quickly extinguish fires and protect your property. Professional installation and maintenance services available in Chennai.',
-    image: '/images/hero/hero-5.jpg',
+    image: '/images/hero/hero-5.png',
     gradient: 'from-amber-900 via-red-900 to-orange-900',
     overlay: 'rgba(0, 0, 0, 0.5)',
   },
-  {
-    id: 6,
-    title: 'Gas Suppression System',
-    subtitle: 'Gas Suppression System',
-    description: 'Clean agent fire suppression for critical areas. Fast-acting protection without water damage. Ideal for server rooms, data centers, and sensitive equipment. Zero residue, safe for electronics. Expert installation and maintenance in Chennai.',
-    image: '/images/hero/hero-6.jpg',
-    gradient: 'from-blue-900 via-indigo-900 to-purple-900',
-    overlay: 'rgba(0, 0, 0, 0.5)',
-  },
+  // {
+  //   id: 6,
+  //   title: 'Gas Suppression System',
+  //   subtitle: '',
+  //   description: 'Clean agent fire suppression for critical areas. Fast-acting protection without water damage. Ideal for server rooms, data centers, and sensitive equipment. Zero residue, safe for electronics. Expert installation and maintenance in Chennai.',
+  //   image: '/images/hero/hero-6.jpg',
+  //   gradient: 'from-blue-900 via-indigo-900 to-purple-900',
+  //   overlay: 'rgba(0, 0, 0, 0.5)',
+  // },
   {
     id: 7,
     title: 'Gas Suppression System',
@@ -82,10 +82,10 @@ const heroSlides = [
   },
   {
     id: 9,
-    title: 'CQRS',
+    title: 'TUBE BASED SUPPRESSION SYSTEM',
     subtitle: "Ceasefire's Quick Response System",
     description: 'Ceasefire Quick Response System for rapid fire detection and suppression. Advanced technology for fast response times. Reliable fire safety solution for commercial and industrial properties in Chennai. Professional installation, testing, and maintenance services available.',
-    image: '/images/hero/hero-9.jpg',
+    image: '/images/hero/hero-9.png',
     gradient: 'from-green-900 via-emerald-900 to-teal-900',
     overlay: 'rgba(0, 0, 0, 0.5)',
   },
@@ -163,6 +163,7 @@ export function Hero() {
   const currentSlideData = heroSlides[currentSlide];
 
   const handleImageError = (slideId: number) => {
+    console.warn(`Image failed to load for slide ${slideId}`);
     setImageErrors(prev => ({ ...prev, [slideId]: true }));
   };
 
@@ -212,9 +213,20 @@ export function Hero() {
                     alt={slide.title}
                     fill
                     className="object-cover"
-                    priority={index === 0}
+                    priority={index === 0 || slide.id === 5 || slide.id === 9}
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 100vw"
-                    onError={() => handleImageError(slide.id)}
+                    onError={() => {
+                      console.warn(`Failed to load image for slide ${slide.id}: ${slide.image}`);
+                      handleImageError(slide.id);
+                    }}
+                    onLoad={() => {
+                      // Clear error state if image loads successfully
+                      setImageErrors(prev => {
+                        const newErrors = { ...prev };
+                        delete newErrors[slide.id];
+                        return newErrors;
+                      });
+                    }}
                     quality={90}
                     unoptimized={process.env.NODE_ENV === 'development'}
                   />
