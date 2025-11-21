@@ -152,7 +152,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
       <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
         <BreadcrumbSchema items={breadcrumbs} />
         {/* Header */}
-        <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-slate-900 via-amber-900 to-yellow-900 text-white">
+        <section className="pt-24 pb-12 sm:py-16 md:py-20 bg-gradient-to-br from-slate-900 via-amber-900 to-yellow-900 text-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <Link 
               href="/products" 
@@ -269,8 +269,15 @@ export default async function ProductPage({ params }: ProductPageProps) {
         <ProductSchema product={product} category={category} />
         <BreadcrumbSchema items={breadcrumbs} />
         {/* Header */}
-        <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-slate-900 via-amber-900 to-yellow-900 text-white">
+        <section className="pt-24 pb-12 sm:py-16 md:py-20 bg-gradient-to-br from-slate-900 via-amber-900 to-yellow-900 text-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <Link 
+              href="/products" 
+              className="inline-flex items-center gap-2 text-white hover:text-amber-200 mb-4 sm:mb-6 transition-all duration-200 text-sm sm:text-base font-medium bg-white/10 hover:bg-white/20 px-4 py-2.5 sm:px-3 sm:py-2 rounded-lg backdrop-blur-sm border border-white/20 active:scale-95 min-h-[44px] sm:min-h-auto"
+            >
+              <ArrowLeft className="w-5 h-5 sm:w-4 sm:h-4 flex-shrink-0" />
+              <span className="whitespace-nowrap">Back to Products</span>
+            </Link>
             {/* Breadcrumbs */}
             <nav className="mb-4 sm:mb-6" aria-label="Breadcrumb">
               <ol className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm text-white/80 flex-wrap">
