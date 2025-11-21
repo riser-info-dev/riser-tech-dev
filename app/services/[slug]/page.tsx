@@ -17,8 +17,9 @@ const icons: Record<string, any> = {
 };
 
 // Generate metadata for service pages
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const service = SERVICES.find((s) => s.id === params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const service = SERVICES.find((s) => s.id === slug);
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
 
   if (!service) {
@@ -66,8 +67,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default async function ServiceDetailPage({ params }: { params: { slug: string } }) {
-  const service = SERVICES.find((s) => s.id === params.slug);
+export default async function ServiceDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const service = SERVICES.find((s) => s.id === slug);
 
   if (!service) {
     notFound();
