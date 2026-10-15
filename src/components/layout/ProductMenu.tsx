@@ -37,11 +37,6 @@ interface MenuItem {
 
 const productMenuItems: MenuItem[] = [
   {
-    label: 'Fire Extinguishers',
-    icon: Flame,
-    href: '/products#fire-extinguishers',
-  },
-  {
     label: 'Sprinklers',
     icon: Droplet,
     href: '/products#sprinklers',
@@ -62,19 +57,24 @@ const productMenuItems: MenuItem[] = [
     href: '/products#hydrants-accessories',
   },
   {
-    label: 'Alarm Solutions',
-    icon: Bell,
-    href: '/products#alarm-solutions',
-  },
-  {
     label: 'Valves',
     icon: PanelTop,
     href: '/products#valves',
   },
   {
+    label: 'Alarm Solutions',
+    icon: Bell,
+    href: '/products#alarm-solutions',
+  },
+  {
     label: 'Services',
     icon: Wrench,
     href: '/products#services',
+  },
+  {
+    label: 'Fire Extinguishers',
+    icon: Flame,
+    href: '/products#fire-extinguishers',
   },
 ];
 

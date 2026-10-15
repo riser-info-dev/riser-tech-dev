@@ -8,6 +8,7 @@ interface LensHeadingProps {
   className?: string;
   as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   magnify?: number;
+  id?: string;
 }
 
 export function LensHeading({
@@ -15,6 +16,7 @@ export function LensHeading({
   className = '',
   as: Component = 'h2',
   magnify = 2.2,
+  id,
 }: LensHeadingProps) {
   const headingRef = useRef<HTMLElement>(null);
   const [isHovering, setIsHovering] = useState(false);
@@ -83,6 +85,7 @@ export function LensHeading({
     <>
       <HeadingComponent
         ref={headingRef}
+        id={id}
         className={`relative inline-block ${className}`}
         style={{ cursor: 'none' }}
       >

@@ -6,18 +6,18 @@ export const SERVICES: Array<{
   features: string[];
 }> = [
   {
+    id: 'fire-sprinkler-systems',
+    title: 'Fire Sprinkler Systems',
+    description: 'UL Listed and FM Approved Reliable Sprinkler fire suppression systems — ESFR, wet-pipe, dry-pipe, and pre-action — designed and installed for warehouses, data centres, and commercial buildings across India.',
+    icon: 'droplet',
+    features: ['UL / FM Approved', 'ESFR & Pre-action', 'NFPA 13 Design'],
+  },
+  {
     id: 'fire-alarm-installation',
     title: 'Fire Alarm Installation',
     description: 'State-of-the-art fire alarm systems that alert you to potential hazards, keeping your property safe.',
     icon: 'bell',
     features: ['24/7 monitoring', 'Smart detection', 'Easy maintenance'],
-  },
-  {
-    id: 'emergency-lighting',
-    title: 'Emergency Lighting',
-    description: 'Reliable emergency lighting systems that ensure visibility during power outages and emergencies.',
-    icon: 'lightbulb',
-    features: ['Battery backup', 'LED technology', 'Auto activation'],
   },
   {
     id: 'fire-safety-inspections',

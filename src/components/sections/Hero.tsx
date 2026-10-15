@@ -12,13 +12,22 @@ const heroSlides = [
     id: 1,
     title: 'Safety is not just a priority,',
     subtitle: "it's a Responsibility",
-    description: 'Your trusted partner for comprehensive fire and safety solutions. Protecting what matters most with reliable systems and expert service.',
+    description: 'Delivering Reliable Fire Safety Systems for a Safer Tomorrow.',
     image: '/images/hero/hero-1.png',
     gradient: 'from-slate-900 via-slate-800 to-amber-900',
-    overlay: 'rgba(0, 0, 0, 0.5)',
+    overlay: 'rgba(0, 0, 0, 0.4)',
   },
   {
-    id: 2,
+  id: 2,
+  title: 'Pre-Action Fire System',
+  subtitle: 'Reliable Model DDX Pneumatic/Electric',
+  description: 'Advanced fire suppression powered by the Reliable Model DDX Valve and RC-1 Release Control Panel. Features a double-interlock design utilizing a double-headed valve.',
+  image: '/images/hero/Pre-Action-1.png',
+  gradient: 'from-blue-950 via-slate-900 to-sky-900',
+  overlay: 'rgba(0, 0, 0, 0.5)',
+},
+  {
+    id: 3,
     title: 'Reliable Fire Safety',
     subtitle: 'Starts Here',
     description: 'State-of-the-art fire protection systems designed to keep your property safe. Professional installation and 24/7 support.',
@@ -26,17 +35,26 @@ const heroSlides = [
     gradient: 'from-gray-900 via-amber-900 to-yellow-900',
     overlay: 'rgba(0, 0, 0, 0.5)',
   },
-  {
-    id: 3,
-    title: 'Certified Experts',
-    subtitle: 'Trusted Solutions',
-    description: 'Over 12 years of experience in fire safety. Certified professionals ready to protect what matters most to you.',
-    image: '/images/hero/hero-3.png',
-    gradient: 'from-slate-800 via-amber-800 to-yellow-800',
+    {
+    id: 4,
+    title: 'Gas Suppression System',
+    subtitle: 'Total Flooding Fluoroketone (FK) Based Fire Suppression System',
+    description: 'Advanced FK-based gas suppression system for complete fire protection. Environmentally friendly, zero ozone depletion. Fast discharge, total flooding coverage. Ideal for data centers, server rooms, and critical facilities in Chennai. Certified installation and maintenance services.',
+    image: '/images/hero/suppression-system-7.jpg',
+    gradient: 'from-cyan-900 via-blue-900 to-indigo-900',
     overlay: 'rgba(0, 0, 0, 0.5)',
   },
   {
-    id: 4,
+    id: 5,
+    title: 'TUBE BASED SUPPRESSION SYSTEM',
+    subtitle: "Ceasefire's Quick Response System",
+    description: 'Ceasefire Quick Response System for rapid fire detection and suppression. Advanced technology for fast response times. Reliable fire safety solution for commercial and industrial properties in Chennai.',
+    image: '/images/hero/hero-9.png',
+    gradient: 'from-green-900 via-emerald-900 to-teal-900',
+    overlay: 'rgba(0, 0, 0, 0.5)',
+  },
+  {
+    id: 6,
     title: 'Fire Protection System',
     subtitle: 'Advanced Solutions',
     description: 'Comprehensive fire protection systems with cutting-edge technology. From detection to suppression, we provide complete fire safety solutions for your business.',
@@ -45,7 +63,7 @@ const heroSlides = [
     overlay: 'rgba(0, 0, 0, 0.5)',
   },
   {
-    id: 5,
+    id: 7,
     title: 'SUPPRESSION SYSTEMS',
     subtitle: 'Advanced Fire Suppression',
     description: 'State-of-the-art fire suppression systems designed to quickly extinguish fires and protect your property. Professional installation and maintenance services available in Chennai.',
@@ -62,40 +80,33 @@ const heroSlides = [
   //   gradient: 'from-blue-900 via-indigo-900 to-purple-900',
   //   overlay: 'rgba(0, 0, 0, 0.5)',
   // },
-  {
-    id: 7,
-    title: 'Gas Suppression System',
-    subtitle: 'Total Flooding Fluoroketone (FK) Based Fire Suppression System',
-    description: 'Advanced FK-based gas suppression system for complete fire protection. Environmentally friendly, zero ozone depletion. Fast discharge, total flooding coverage. Ideal for data centers, server rooms, and critical facilities in Chennai. Certified installation and maintenance services.',
-    image: '/images/hero/hero-7.jpg',
-    gradient: 'from-cyan-900 via-blue-900 to-indigo-900',
-    overlay: 'rgba(0, 0, 0, 0.5)',
-  },
+
   {
     id: 8,
     title: 'KITCHEN FIRE SUPPRESSION',
     subtitle: 'LPCB Certified Commercial Kitchen Suppression System (Wet Chemical Based)',
-    description: 'LPCB certified wet chemical kitchen fire suppression system. Automatic detection and suppression for commercial kitchens in Chennai. Protects cooking equipment, hoods, and ducts. Fast-acting wet chemical agent. Professional installation and maintenance for restaurants and hotels.',
-    image: '/images/hero/hero-8.jpg',
+    description: 'LPCB certified wet chemical kitchen fire suppression system. Automatic detection and suppression for commercial kitchens in Chennai. Professional installation and maintenance for restaurants and hotels.',
+    image: '/images/hero/kitchen-suppression-1.jpg',
     gradient: 'from-orange-900 via-red-900 to-amber-900',
     overlay: 'rgba(0, 0, 0, 0.5)',
   },
+
   {
     id: 9,
-    title: 'TUBE BASED SUPPRESSION SYSTEM',
-    subtitle: "Ceasefire's Quick Response System",
-    description: 'Ceasefire Quick Response System for rapid fire detection and suppression. Advanced technology for fast response times. Reliable fire safety solution for commercial and industrial properties in Chennai. Professional installation, testing, and maintenance services available.',
-    image: '/images/hero/hero-9.png',
-    gradient: 'from-green-900 via-emerald-900 to-teal-900',
-    overlay: 'rgba(0, 0, 0, 0.5)',
-  },
-  {
-    id: 10,
     title: 'ALARM SOLUTIONS',
     subtitle: 'Fire alarm system',
-    description: 'Professional fire alarm system installation in Chennai. Addressable and conventional fire alarm systems. Smoke detectors, heat detectors, and manual call points. 24/7 monitoring and maintenance. Tamil Nadu fire safety compliance. Expert fire alarm installation services for commercial and residential properties.',
-    image: '/images/hero/hero-10.jpg',
+    description: 'Professional fire alarm system installation in Chennai. Addressable and conventional fire alarm systems. Smoke detectors, heat detectors, and manual call points. 24/7 monitoring and maintenance.  Expert fire alarm installation services for commercial and residential properties.',
+    image: '/images/hero/hero-10.png',
     gradient: 'from-purple-900 via-pink-900 to-rose-900',
+    overlay: 'rgba(0, 0, 0, 0.5)',
+  },
+    {
+    id: 10,
+    title: 'Certified Experts',
+    subtitle: 'Trusted Solutions',
+    description: 'Over 12 years of experience in fire safety. Certified professionals ready to protect what matters most to you.',
+    image: '/images/hero/hero-3.png',
+    gradient: 'from-slate-800 via-amber-800 to-yellow-800',
     overlay: 'rgba(0, 0, 0, 0.5)',
   },
 ];
@@ -168,8 +179,8 @@ export function Hero() {
   };
 
   return (
-    <section 
-      className="relative min-h-[44vh] sm:min-h-[64vh] md:min-h-[72vh] lg:min-h-[82vh] overflow-hidden pt-20"
+    <section
+      className="relative min-h-screen overflow-hidden pt-24 z-0"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -283,7 +294,7 @@ export function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-10 md:py-12 lg:py-16 text-center w-full min-h-[44vh] sm:min-h-[64vh] md:min-h-[72vh] lg:min-h-[82vh] flex flex-col justify-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-10 md:py-12 lg:py-16 text-center w-full min-h-screen flex flex-col justify-center">
         {/* Badge - Static, no re-animation */}
         <div className="flex justify-center mb-1.5 sm:mb-3.5 md:mb-4.5 lg:mb-5.5">
           <div className="inline-flex items-center gap-1 sm:gap-1.5 md:gap-2 px-2 py-1 sm:px-3 sm:py-1.5 md:px-4 md:py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20 max-w-[85%] sm:max-w-none">

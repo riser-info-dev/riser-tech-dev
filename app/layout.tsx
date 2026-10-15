@@ -12,22 +12,36 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: 'RiserTech - Fire & Safety Solutions in Chennai | Expert Fire Protection Services',
-    template: '%s | RiserTech - Fire Safety Experts Chennai',
+    default: 'Reliable Sprinkler India | Fire Protection Systems — RiserTech Chennai',
+    template: '%s | RiserTech — Reliable Sprinkler Distributor India',
   },
   description:
-    'Leading fire safety solutions provider in Chennai. Expert fire alarm installation, fire extinguishers, emergency lighting & fire protection services. 12+ years experience. Call 9787666104',
+    'Authorised Indian distributor of Reliable Sprinkler Co. USA. UL/FM/LPCB certified fire sprinkler systems, ESFR, DDX pre-action & LB11 Li-ion sprinklers. Chennai. Call 9787666104.',
   keywords: [
+    // Branded
+    'reliable sprinkler india',
+    'reliable fire sprinkler',
+    'reliable sprinkler distributor india',
+    'reliable sprinkler chennai',
+    'reliable automatic sprinkler co india',
+    // Generic high-intent
+    'fire sprinkler systems india',
+    'ESFR sprinklers india',
+    'UL FM approved sprinklers india',
+    'commercial fire protection equipment india',
+    'pre-action fire suppression system india',
+    'warehouse fire protection system india',
+    // Emerging vertical
+    'lithium ion battery fire protection india',
+    'EV gigafactory fire suppression india',
+    'BESS fire protection system india',
+    'data centre fire sprinkler system india',
+    'cold storage fire protection india',
+    // Local
     'fire safety Chennai',
-    'fire alarm installation Chennai',
-    'fire extinguisher Chennai',
-    'fire protection services Chennai',
-    'emergency lighting Chennai',
-    'fire safety equipment Chennai',
-    'fire safety inspection Chennai',
-    'fire suppression systems Chennai',
-    'fire safety solutions Tamil Nadu',
-    'best fire safety company Chennai',
+    'fire sprinkler supplier Chennai',
+    'fire protection Tamil Nadu',
+    'fire safety solutions India',
   ],
   authors: [{ name: 'RiserTech' }],
   creator: 'RiserTech',
@@ -40,22 +54,22 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_IN',
     url: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
-    siteName: 'RiserTech - Fire & Safety Solutions',
-    title: 'RiserTech - Fire & Safety Solutions in Chennai | Expert Fire Protection',
+    siteName: 'RiserTech — Reliable Sprinkler Distributor India',
+    title: 'Reliable Sprinkler India | UL/FM Fire Sprinkler Systems — RiserTech',
     description:
-      'Leading fire safety solutions provider in Chennai. Expert fire alarm installation, fire extinguishers & emergency lighting. 12+ years experience.',
+      'Authorised Indian distributor of Reliable Sprinkler Co. USA. UL/FM/LPCB certified fire sprinkler systems, ESFR storage, DDX pre-action & LB11 Li-ion sprinklers. Chennai.',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'RiserTech - Fire & Safety Solutions Chennai',
+        alt: 'RiserTech — Reliable Sprinkler Distributor India, Chennai',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'RiserTech - Fire & Safety Solutions Chennai',
+    title: 'Reliable Sprinkler India | UL/FM Fire Systems — RiserTech',
     description: 'Expert fire safety solutions in Chennai. Fire alarms, extinguishers, emergency lighting & more.',
     images: ['/twitter-image.jpg'],
   },

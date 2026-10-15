@@ -34,6 +34,12 @@ const fireExtinguishers = [
 
 const sprinklers = [
   {
+    id: '0',
+    title: 'Conventional Sprinklers',
+    description: '360° spherical spray for open commercial and industrial ceilings. Upright & pendent orientations — UL Listed, FM Approved.',
+    image: '/images/products/sprinklers/conventional-sprinklers.png',
+  },
+  {
     id: '1',
     title: 'Residential Sprinklers',
     description: 'Upright • Pendent • Horizontal Sidewall • Flat Plate Concealed • Domed Concealed',
@@ -43,7 +49,7 @@ const sprinklers = [
     id: '2',
     title: 'Standard Coverage - Standard Response',
     description: 'Upright & Conventional • Pendent, Sidewall • Stainless Steel, Fusible Link • Flat Plate Concealed • Flexible Sprinkler Series',
-    image: '/images/products/sprinklers/standard-coverage-standard-response-1.jpg',
+    image: '/images/products/sprinklers/standard-coverage-standard-response-1.png',
   },
   {
     id: '3',
@@ -67,13 +73,13 @@ const sprinklers = [
     id: '6',
     title: 'Dry Barrel Sprinklers',
     description: 'Standard Coverage – Standard Response • Storage Sprinklers • Residential Sprinklers • Dry Barrel Sprinklers',
-    image: '/images/products/sprinklers/dry-barrel-1.jpg',
+    image: '/images/products/sprinklers/dry-barrel-1.png',
   },
   {
     id: '7',
-    title: 'Spray Nozzles & Accessories',
-    description: '• Frame Style Spray Nozzle • Model A-2,D-2 Solid Cone Spray Nozzle • Model C-1 Window Sprinkler • Model E Spray Nozzle • Model EM Low Pressure Mist Nozzle',
-    image: '/images/products/sprinklers/spray-nozzles-1.jpg',
+    title: 'Flat Spray Sprinklers',
+    description: 'Reliable Flat Spray Sprinklers for specialized applications — designed for low-clearance areas, open-wood joist construction, and obstructed ceiling conditions requiring flat spray water distribution.',
+    image: '/images/products/sprinklers/flat-spray-sprinklers.png',
   },
 ];
 
@@ -340,12 +346,33 @@ export default function ProductsPage() {
         </div>
       </ProductSection>
 
-      {/* Section 2: Valves */}
+      {/* Section 2: Sprinklers */}
+      <ProductSection
+        id="sprinklers"
+        title="SPRINKLERS"
+        description="Advanced sprinkler systems for comprehensive fire protection"
+        variant="gradient"
+      >
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+          {sprinklers.map((product, index) => (
+            <ProductCard3D
+              key={product.id}
+              title={product.title}
+              description={product.description}
+              image={product.image}
+              imageAlt={product.title}
+              delay={index * 0.1}
+              variant="full-bleed"
+            />
+          ))}
+        </div>
+      </ProductSection>
+
+      {/* Section 3: Valves */}
       <ProductSection
         id="valves"
         title="VALVES"
         description="High-quality valves for fire protection systems"
-        variant="gradient"
       >
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
           {valves.map((product, index) => (
@@ -362,14 +389,15 @@ export default function ProductsPage() {
         </div>
       </ProductSection>
 
-      {/* Section 3: Hydrants & Accessories */}
+      {/* Section 4: Hydrants & Accessories */}
       <ProductSection
         id="hydrants-accessories"
         title="HYDRANTS & ACCESSORIES"
         description="Complete fire hydrant systems and accessories"
+        variant="gradient"
       >
-        <ProductCardSlider 
-          items={hydrantsAccessories} 
+        <ProductCardSlider
+          items={hydrantsAccessories}
           cardsPerView={3}
           autoPlay={true}
           autoPlayInterval={6000}
@@ -378,48 +406,7 @@ export default function ProductsPage() {
         />
       </ProductSection>
 
-      {/* Section 4: Sprinklers */}
-      <ProductSection
-        id="sprinklers"
-        title="SPRINKLERS"
-        description="Advanced sprinkler systems for comprehensive fire protection"
-      >
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
-          {sprinklers.map((product, index) => (
-            <ProductCard3D
-              key={product.id}
-              title={product.title}
-              description={product.description}
-              image={product.image}
-              imageAlt={product.title}
-              delay={index * 0.1}
-            />
-          ))}
-        </div>
-      </ProductSection>
-
-      {/* Section 5: Alarm Solutions */}
-      <ProductSection
-        id="alarm-solutions"
-        title="ALARM SOLUTIONS"
-        description="Advanced fire detection and alarm systems"
-        variant="gradient"
-      >
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-          {alarmSolutions.map((product, index) => (
-            <ProductCard3D
-              key={product.id}
-              title={product.title}
-              description={product.description}
-              image={product.image}
-              imageAlt={product.title}
-              delay={index * 0.1}
-            />
-          ))}
-        </div>
-      </ProductSection>
-
-      {/* Section 6: Fire Extinguishers */}
+      {/* Section 5: Fire Extinguishers */}
       <ProductSection
         id="fire-extinguishers"
         title="FIRE EXTINGUISHERS"
@@ -427,6 +414,26 @@ export default function ProductsPage() {
       >
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
           {fireExtinguishers.map((product, index) => (
+            <ProductCard3D
+              key={product.id}
+              title={product.title}
+              description={product.description}
+              image={product.image}
+              imageAlt={product.title}
+              delay={index * 0.1}
+            />
+          ))}
+        </div>
+      </ProductSection>
+
+      {/* Section 6: Alarm Solutions */}
+      <ProductSection
+        id="alarm-solutions"
+        title="ALARM SOLUTIONS"
+        description="Advanced fire detection and alarm systems"
+      >
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+          {alarmSolutions.map((product, index) => (
             <ProductCard3D
               key={product.id}
               title={product.title}

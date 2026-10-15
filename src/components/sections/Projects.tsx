@@ -5,12 +5,11 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { LensHeading } from '@/components/ui/LensHeading';
 import { 
-  Building2, 
-  Factory, 
-  Home, 
+  Building2,
+  Factory,
+  Home,
   Hospital,
   Server,
-  ShoppingBag,
 } from 'lucide-react';
 
 const projects: Array<{
@@ -30,6 +29,15 @@ const projects: Array<{
     icon: Building2,
     image: '/images/projects/fire-alarm-installation.jpg',
     stats: { clients: 250, completed: '2024' },
+  },
+  {
+    id: '6',
+    title: 'Data Centre DDX Pre-Action Systems',
+    category: 'Data Centre',
+    description: 'Reliable DDX double-interlock pre-action fire suppression systems for data centres and IT parks — preventing accidental discharge while ensuring instant response to real fire events. Zero-downtime, NFPA 13 compliant.',
+    icon: Server,
+    image: '/images/projects/data-center-protection.jpg',
+    stats: { clients: 40, completed: '2024' },
   },
   {
     id: '2',
@@ -66,15 +74,6 @@ const projects: Array<{
     icon: Home,
     image: '/images/projects/smart-fire-alarm.jpg',
     stats: { clients: 500, completed: '2024' },
-  },
-  {
-    id: '6',
-    title: 'Retail Fire Safety',
-    category: 'Retail',
-    description: 'Complete fire safety solutions for retail stores and shopping centers with minimal business disruption.',
-    icon: ShoppingBag,
-    image: '/images/projects/retail-fire-safety.jpg',
-    stats: { clients: 180, completed: '2024' },
   },
 ];
 
